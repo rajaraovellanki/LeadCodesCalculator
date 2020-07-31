@@ -21,14 +21,14 @@ User needs to set the quantity(by which the rule should be applied), the type of
 
 Eg 1:
 For  the rule  - providing more than 5 buy leads gives us a £10 bonus,
-quantity = 5
-incrementType = "fixed" 
+quantity = 5, 
+incrementType = "fixed", 
 increment = 10
 
 Eg 2:
 For the rule  - providing more than 8 rent leads we get a 10% bonus on total base price,
-quantity = 8
-incrementType = "variable" 
+quantity = 8,
+incrementType = "variable",
 increment = 10
 
 calculator.py is the main module which calculates the total pricing based on the provided pricing rules
