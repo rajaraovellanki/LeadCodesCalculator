@@ -40,7 +40,7 @@ class Calculator:
                 self.logging.debug(self.moduleName+'Applying the rule: For the number of buyers above '+str(self.__pricing_rules.getBRule().getQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getBRule().getIncrement()))
                 self.__totalPrice += self.__b*constants.B_PRICE + self.__pricing_rules.getBRule().getIncrement()
             elif self.__pricing_rules.getBRule().getIncrementType() == constants.INCREMENT_TYPE_VARIABLE:
-                self.logging.debug(self.moduleName+'Applying the rule: For the number of buyers above '+str(self.__pricing_rules.getBRule().getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getBRule().getIncrement()+"% on the base pay"))
+                self.logging.debug(self.moduleName+'Applying the rule: For the number of buyers above '+str(self.__pricing_rules.getBRule().getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getBRule().getIncrement())+"% on the base pay")
                 self.__totalPrice += self.__b*constants.B_PRICE + self.__pricing_rules.getBRule().getIncrement()*self.__b*constants.B_PRICE/100
         else:
             self.logging.debug(self.moduleName+'No rule is applicable for the present amount of buyers ')
@@ -51,7 +51,7 @@ class Calculator:
                 self.logging.debug(self.moduleName+'Applying the rule: For the number of rents above '+str(self.__pricing_rules.getRRule().getQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getRRule().getIncrement()))
                 self.__totalPrice += self.__r*constants.R_PRICE + self.__pricing_rules.getRRule().getIncrement()
             elif self.__pricing_rules.getRRule().getIncrementType() == constants.INCREMENT_TYPE_VARIABLE:
-                self.logging.debug(self.moduleName+'Applying the rule: For the number of rents above '+str(self.__pricing_rules.getRRule().getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getRRule().getIncrement()+"% on the base pay"))
+                self.logging.debug(self.moduleName+'Applying the rule: For the number of rents above '+str(self.__pricing_rules.getRRule().getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getRRule().getIncrement())+"% on the base pay")
                 self.__totalPrice += self.__r*constants.R_PRICE + self.__pricing_rules.getRRule().getIncrement()*self.__r*constants.R_PRICE/100
         else:
             self.logging.debug(self.moduleName+'No rule is applicable for the present amount of rents ')
@@ -62,7 +62,7 @@ class Calculator:
                 self.logging.debug(self.moduleName+'Applying the rule: For the number of short term leases above '+str(self.__pricing_rules.getSTRule().getQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getSTRule().getIncrement()))
                 self.__totalPrice += self.__st*constants.ST_PRICE + self.__pricing_rules.getSTRule().getIncrement()
             elif self.__pricing_rules.getSTRule().getIncrementType() == constants.INCREMENT_TYPE_VARIABLE:
-                self.logging.debug(self.moduleName+'Applying the rule: For the number of short term leases above '+str(self.__pricing_rules.getSTRule().getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getSTRule().getIncrement()+"% on the base pay"))
+                self.logging.debug(self.moduleName+'Applying the rule: For the number of short term leases above '+str(self.__pricing_rules.getSTRule().getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getSTRule().getIncrement())+"% on the base pay")
                 self.__totalPrice += self.__st*constants.ST_PRICE + self.__pricing_rules.getSTRule().getIncrement()*self.__st*constants.ST_PRICE/100
         else:
             self.logging.debug(self.moduleName+'No rule is applicable for the present amount of short term lease')

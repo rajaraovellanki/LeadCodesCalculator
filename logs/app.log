@@ -1,20 +1,31 @@
-31-Jul-20 14:17:38 - [root] - [WARNING] - [LeadRule] Quantity should be of type: 'int'
-31-Jul-20 14:17:38 - [root] - [WARNING] - [LeadRule] Increment should be of type: 'int'
-31-Jul-20 14:17:38 - [root] - [WARNING] - [LeadRule] Increment type should be either 'fixed', or 'variable'
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [PricingRules] Setting the pricing rule for Buys
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [PricingRules] Setting the pricing rule for Rents
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [Calculator] The provided pricing rules have been assigned successfully
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
-31-Jul-20 14:17:38 - [root] - [INFO] - [Calculator] Lead code 'st' has been added
-31-Jul-20 14:17:38 - [root] - [WARNING] - [Calculator] Lead code 's' has not been accepted. Please provide one of the following lead codes: 'b', 'r', 'st'
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [Calculator] Applying the rule: For the number of buyers above 5, add a fixed amount of $10
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [Calculator] No rule is applicable for the present amount of rents 
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [Calculator] Applying the rule: For the number of short term leases above 0, add a fixed amount of $0
-31-Jul-20 14:17:38 - [root] - [DEBUG] - [Calculator] Total price is $82.5
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [PricingRules] Setting the pricing rule for Buys
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [PricingRules] Setting the pricing rule for Rents
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [Calculator] The provided pricing rules have been assigned successfully
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'b' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'r' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'st' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'st' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'st' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'st' has been added
+31-Jul-20 20:43:51 - [root] - [INFO] - [Calculator] Lead code 'st' has been added
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [Calculator] Applying the rule: For the number of buyers above 5, add a fixed amount of $10
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [Calculator] Applying the rule: For the number of rents above 8, add a variable pay of 10% on the base pay
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [Calculator] Applying the rule: For the number of short term leases above 0, add a fixed amount of $0
+31-Jul-20 20:43:51 - [root] - [DEBUG] - [Calculator] Total price is $172.0

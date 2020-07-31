@@ -23,13 +23,13 @@ pricing_rules.setRRule(rRule)
 calc = calculator.Calculator(pricing_rules)
 
 if constants.TEST_WRONG_INPUT == "false":
-    for x in range(6):
+    for x in range(10):
         calc.add(constants.B)
 
-    for x in range(2):
+    for x in range(9):
         calc.add(constants.R)
 
-    for x in range(1):
+    for x in range(5):
         calc.add(constants.ST)
 else:
     calc.add('bb')
