@@ -1,13 +1,14 @@
 import leadrule
 import logger
+import constants
+
 #class for setting overall pricing rules
 class PricingRules:
-    __bRule = leadrule.LeadRule()
-    __rRule = leadrule.LeadRule()
-    __stRule = leadrule.LeadRule()
+    __bRule = leadrule.LeadRule(constants.DEFAULT_QUANTITY,constants.DEFAULT_INCREMENT,constants.DEFAULT_INCREMENT_TYPE)
+    __rRule = leadrule.LeadRule(constants.DEFAULT_QUANTITY,constants.DEFAULT_INCREMENT,constants.DEFAULT_INCREMENT_TYPE)
+    __stRule = leadrule.LeadRule(constants.DEFAULT_QUANTITY,constants.DEFAULT_INCREMENT,constants.DEFAULT_INCREMENT_TYPE)
 
     moduleName='[PricingRules] '
-    logging = logger.getLogger()
     logging = logger.getLogger()
     
     def setBRule(self, bRule):
