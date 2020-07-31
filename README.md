@@ -4,13 +4,13 @@ User can add the rules in the file main_calc.py. This file will call the main mo
 
 
 To run the program, use the below command:
-#### py main_calc.py
+*py main_calc.py*
 
 
 The logs will be generated in the logs directory with the name app.log. 
 By default, the logs are in DEBUG mode. You can change the mode to INFO or WARNING by changing the level in logger.py file.
 Eg:
-level=logging.INFO
+*level=logging.INFO*
 
 
 ### Code Structure:
