@@ -18,6 +18,7 @@ Code Structure:
 pricingrules.py has the class PricingRules which is used to set and get the required rules for all the lead codes
 leadrule.py has the class LeadRule which is used to set the rules for a particular lead code. 
 User needs to set the quantity(by which the rule should be applied), the type of the increment(fixed or variable) and the increment value in the leadrule.py for each leat rule that is defined in the pricingrules.py
+
 Eg 1:
 For  the rule  - providing more than 5 buy leads gives us a £10 bonus,
 quantity = 5
