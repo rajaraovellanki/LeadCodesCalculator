@@ -5,6 +5,6 @@ import constants
 
 
 def getLogger():
-    logging.basicConfig(level=logging.DEBUG, filename=constants.LOGGER_FILE_LOC, filemode='w',
+    logging.basicConfig(level=logging.DEBUG,
                         format='%(asctime)s - [%(name)s] - [%(levelname)s] - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
     return logging

@@ -1,6 +1,6 @@
 import logger
 import constants
-#class for setting rules for leads
+# class for setting rules for leads
 
 
 class LeadRule:
