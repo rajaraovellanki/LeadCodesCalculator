@@ -12,7 +12,7 @@ class LeadRule:
     logging = logger.getLogger()
 
     def __init__(self, quantity, bonus, bonus_type):
-        if isinstance(quantity, int) and isinstance(bonus, int) and (bonus_type == constants.BONUS_TYPE_FIXED or bonus_type == constants.BONUS_TYPE_PERCENTAGE):
+        if isinstance(quantity, int) and (isinstance(bonus, int) or isinstance(bonus, float)) and (bonus_type == constants.BONUS_TYPE_FIXED or bonus_type == constants.BONUS_TYPE_PERCENTAGE):
             self.__quantity = quantity
             self.__bonus = bonus
             self.__bonus_type = bonus_type
