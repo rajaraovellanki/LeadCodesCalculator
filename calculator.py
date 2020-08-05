@@ -5,10 +5,10 @@ import constants
 
 
 class Calculator:
-    __b = 0
-    __r = 0
-    __st = 0
-    __totalPrice = 0
+    __total_buys = 0
+    __total_rents = 0
+    __total_short_terms = 0
+    __total_price = 0
 
     moduleName = '[Calculator] '
     logging = logger.getLogger()
@@ -21,16 +21,16 @@ class Calculator:
 
     #function to add a leadcode
     def add(self, LeadCode):
-        if LeadCode == constants.B:
-            self.__b += 1
+        if LeadCode == constants.IS_BUY:
+            self.__total_buys += 1
             self.logging.info(self.moduleName+'Lead code \'' +
                               LeadCode+'\' has been added')
-        elif LeadCode == constants.R:
-            self.__r += 1
+        elif LeadCode == constants.IS_RENT:
+            self.__total_rents += 1
             self.logging.info(self.moduleName+'Lead code \'' +
                               LeadCode+'\' has been added')
-        elif LeadCode == constants.ST:
-            self.__st += 1
+        elif LeadCode == constants.IS_SHORT_TERM:
+            self.__total_short_terms += 1
             self.logging.info(self.moduleName+'Lead code \'' +
                               LeadCode+'\' has been added')
         else:
@@ -41,54 +41,54 @@ class Calculator:
 
     #function to calculate the total pricing using the assigned pricing rules
     def total(self):
-        if self.__b >= self.__pricing_rules.getBRule().getQuantity():
-            if self.__pricing_rules.getBRule().getIncrementType() == constants.INCREMENT_TYPE_FIXED:
+        if self.__total_buys >= self.__pricing_rules.getBuyBonusRule().getMinQuantity():
+            if self.__pricing_rules.getBuyBonusRule().getBonusType() == constants.BONUS_TYPE_FIXED:
                 self.logging.debug(self.moduleName+'Applying the rule: For the number of buyers above '+str(
-                    self.__pricing_rules.getBRule().getQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getBRule().getIncrement()))
-                self.__totalPrice += self.__b*constants.B_PRICE + \
-                    self.__pricing_rules.getBRule().getIncrement()
-            elif self.__pricing_rules.getBRule().getIncrementType() == constants.INCREMENT_TYPE_VARIABLE:
-                self.logging.debug(self.moduleName+'Applying the rule: For the number of buyers above '+str(self.__pricing_rules.getBRule(
-                ).getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getBRule().getIncrement())+"% on the base pay")
-                self.__totalPrice += self.__b*constants.B_PRICE + \
-                    self.__pricing_rules.getBRule().getIncrement()*self.__b*constants.B_PRICE/100
+                    self.__pricing_rules.getBuyBonusRule().getMinQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getBuyBonusRule().getBonus()))
+                self.__total_price += self.__total_buys*constants.B_PRICE + \
+                    self.__pricing_rules.getBuyBonusRule().getBonus()
+            elif self.__pricing_rules.getBuyBonusRule().getBonusType() == constants.BONUS_TYPE_PERCENTAGE:
+                self.logging.debug(self.moduleName+'Applying the rule: For the number of buyers above '+str(self.__pricing_rules.getBuyBonusRule(
+                ).getMinQuantity())+', add a variable pay of '+str(self.__pricing_rules.getBuyBonusRule().getBonus())+"% on the base pay")
+                self.__total_price += self.__total_buys*constants.B_PRICE + \
+                    self.__pricing_rules.getBuyBonusRule().getBonus()*self.__total_buys*constants.B_PRICE/100
         else:
             self.logging.debug(
                 self.moduleName+'No rule is applicable for the present amount of buyers ')
-            self.__totalPrice += self.__b*constants.B_PRICE
+            self.__total_price += self.__total_buys*constants.B_PRICE
 
-        if self.__r >= self.__pricing_rules.getRRule().getQuantity():
-            if self.__pricing_rules.getRRule().getIncrementType() == constants.INCREMENT_TYPE_FIXED:
+        if self.__total_rents >= self.__pricing_rules.getRentBonusRule().getMinQuantity():
+            if self.__pricing_rules.getRentBonusRule().getBonusType() == constants.BONUS_TYPE_FIXED:
                 self.logging.debug(self.moduleName+'Applying the rule: For the number of rents above '+str(
-                    self.__pricing_rules.getRRule().getQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getRRule().getIncrement()))
-                self.__totalPrice += self.__r*constants.R_PRICE + \
-                    self.__pricing_rules.getRRule().getIncrement()
-            elif self.__pricing_rules.getRRule().getIncrementType() == constants.INCREMENT_TYPE_VARIABLE:
-                self.logging.debug(self.moduleName+'Applying the rule: For the number of rents above '+str(self.__pricing_rules.getRRule(
-                ).getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getRRule().getIncrement())+"% on the base pay")
-                self.__totalPrice += self.__r*constants.R_PRICE + \
-                    self.__pricing_rules.getRRule().getIncrement()*self.__r*constants.R_PRICE/100
+                    self.__pricing_rules.getRentBonusRule().getMinQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getRentBonusRule().getBonus()))
+                self.__total_price += self.__total_rents*constants.R_PRICE + \
+                    self.__pricing_rules.getRentBonusRule().getBonus()
+            elif self.__pricing_rules.getRentBonusRule().getBonusType() == constants.BONUS_TYPE_PERCENTAGE:
+                self.logging.debug(self.moduleName+'Applying the rule: For the number of rents above '+str(self.__pricing_rules.getRentBonusRule(
+                ).getMinQuantity())+', add a variable pay of '+str(self.__pricing_rules.getRentBonusRule().getBonus())+"% on the base pay")
+                self.__total_price += self.__total_rents*constants.R_PRICE + \
+                    self.__pricing_rules.getRentBonusRule().getBonus()*self.__total_rents*constants.R_PRICE/100
         else:
             self.logging.debug(
                 self.moduleName+'No rule is applicable for the present amount of rents ')
-            self.__totalPrice += self.__r*constants.R_PRICE
+            self.__total_price += self.__total_rents*constants.R_PRICE
 
-        if self.__st >= self.__pricing_rules.getSTRule().getQuantity():
-            if self.__pricing_rules.getSTRule().getIncrementType() == constants.INCREMENT_TYPE_FIXED:
+        if self.__total_short_terms >= self.__pricing_rules.getSTBonusRule().getMinQuantity():
+            if self.__pricing_rules.getSTBonusRule().getBonusType() == constants.BONUS_TYPE_FIXED:
                 self.logging.debug(self.moduleName+'Applying the rule: For the number of short term leases above '+str(
-                    self.__pricing_rules.getSTRule().getQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getSTRule().getIncrement()))
-                self.__totalPrice += self.__st*constants.ST_PRICE + \
-                    self.__pricing_rules.getSTRule().getIncrement()
-            elif self.__pricing_rules.getSTRule().getIncrementType() == constants.INCREMENT_TYPE_VARIABLE:
-                self.logging.debug(self.moduleName+'Applying the rule: For the number of short term leases above '+str(self.__pricing_rules.getSTRule(
-                ).getQuantity())+', add a variable pay of '+str(self.__pricing_rules.getSTRule().getIncrement())+"% on the base pay")
-                self.__totalPrice += self.__st*constants.ST_PRICE + \
-                    self.__pricing_rules.getSTRule().getIncrement()*self.__st*constants.ST_PRICE/100
+                    self.__pricing_rules.getSTBonusRule().getMinQuantity())+', add a fixed amount of $'+str(self.__pricing_rules.getSTBonusRule().getBonus()))
+                self.__total_price += self.__total_short_terms*constants.ST_PRICE + \
+                    self.__pricing_rules.getSTBonusRule().getBonus()
+            elif self.__pricing_rules.getSTBonusRule().getBonusType() == constants.BONUS_TYPE_PERCENTAGE:
+                self.logging.debug(self.moduleName+'Applying the rule: For the number of short term leases above '+str(self.__pricing_rules.getSTBonusRule(
+                ).getMinQuantity())+', add a variable pay of '+str(self.__pricing_rules.getSTBonusRule().getBonus())+"% on the base pay")
+                self.__total_price += self.__total_short_terms*constants.ST_PRICE + \
+                    self.__pricing_rules.getSTBonusRule().getBonus()*self.__total_short_terms*constants.ST_PRICE/100
         else:
             self.logging.debug(
                 self.moduleName+'No rule is applicable for the present amount of short term lease')
-            self.__totalPrice += self.__st*constants.ST_PRICE
+            self.__total_price += self.__total_short_terms*constants.ST_PRICE
 
         self.logging.debug(
-            self.moduleName+'Total price is $'+str(self.__totalPrice))
-        return self.__totalPrice
+            self.moduleName+'Total price is $'+str(self.__total_price))
+        return self.__total_price

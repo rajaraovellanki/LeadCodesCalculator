@@ -6,35 +6,35 @@ import constants
 
 
 class PricingRules:
-    __bRule = leadrule.LeadRule(
-        constants.DEFAULT_QUANTITY, constants.DEFAULT_INCREMENT, constants.DEFAULT_INCREMENT_TYPE)
-    __rRule = leadrule.LeadRule(
-        constants.DEFAULT_QUANTITY, constants.DEFAULT_INCREMENT, constants.DEFAULT_INCREMENT_TYPE)
-    __stRule = leadrule.LeadRule(
-        constants.DEFAULT_QUANTITY, constants.DEFAULT_INCREMENT, constants.DEFAULT_INCREMENT_TYPE)
+    __buy_bonus_rule = leadrule.LeadRule(
+        constants.DEFAULT_QUANTITY, constants.DEFAULT_BONUS, constants.DEFAULT_BONUS_TYPE)
+    __rent_bonus_rule = leadrule.LeadRule(
+        constants.DEFAULT_QUANTITY, constants.DEFAULT_BONUS, constants.DEFAULT_BONUS_TYPE)
+    __st_bonus_rule = leadrule.LeadRule(
+        constants.DEFAULT_QUANTITY, constants.DEFAULT_BONUS, constants.DEFAULT_BONUS_TYPE)
 
     moduleName = '[PricingRules] '
     logging = logger.getLogger()
 
-    def setBRule(self, bRule):
+    def setBuyBonusRule(self, buy_bonus_rule):
         self.logging.debug(self.moduleName+'Setting the pricing rule for Buys')
-        self.__bRule = bRule
+        self.__buy_bonus_rule = buy_bonus_rule
 
-    def setRRule(self, rRule):
+    def setRentBonusRule(self, rent_bonus_rule):
         self.logging.debug(
             self.moduleName+'Setting the pricing rule for Rents')
-        self.__rRule = rRule
+        self.__rent_bonus_rule = rent_bonus_rule
 
-    def setSTRule(self, stRule):
+    def setSTBonusRule(self, st_bonus_rule):
         self.logging.debug(
             self.moduleName+'Setting the pricing rule for Short term leases')
-        self.__stRule = stRule
+        self.__st_bonus_rule = st_bonus_rule
 
-    def getBRule(self):
-        return self.__bRule
+    def getBuyBonusRule(self):
+        return self.__buy_bonus_rule
 
-    def getRRule(self):
-        return self.__rRule
+    def getRentBonusRule(self):
+        return self.__rent_bonus_rule
 
-    def getSTRule(self):
-        return self.__stRule
+    def getSTBonusRule(self):
+        return self.__st_bonus_rule
