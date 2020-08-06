@@ -21,21 +21,34 @@ class PricingRules:
 
     def set_buy_bonus_rule(self, buy_bonus_rule):
         """Function for setting the buy bonus rule"""
-        self.logging.debug(self.moduleName +
-                           'Setting the pricing rule for Buys')
-        self.__buy_bonus_rule = buy_bonus_rule
+        if isinstance(buy_bonus_rule, leadrule.LeadRule):
+            self.logging.debug(self.moduleName +
+                               'Setting the pricing rule for Buys')
+            self.__buy_bonus_rule = buy_bonus_rule
+        else:
+            raise TypeError(
+                "The type of the argument buy_bonus_rule is not LeadRule")
 
     def set_rent_bonus_rule(self, rent_bonus_rule):
         """Function for setting the rent bonus rule"""
-        self.logging.debug(self.moduleName +
-                           'Setting the pricing rule for Rents')
-        self.__rent_bonus_rule = rent_bonus_rule
+        if isinstance(rent_bonus_rule, leadrule.LeadRule):
+            self.logging.debug(self.moduleName +
+                               'Setting the pricing rule for Rents')
+            self.__rent_bonus_rule = rent_bonus_rule
+        else:
+            raise TypeError(
+                "The type of the argument rent_bonus_rule is not LeadRule")
 
     def set_st_bonus_rule(self, st_bonus_rule):
         """Function for setting the short term bonus rule"""
-        self.logging.debug(self.moduleName +
-                           'Setting the pricing rule for Short term leases')
-        self.__st_bonus_rule = st_bonus_rule
+        if isinstance(st_bonus_rule, leadrule.LeadRule):
+            self.logging.debug(
+                self.moduleName +
+                'Setting the pricing rule for Short term leases')
+            self.__st_bonus_rule = st_bonus_rule
+        else:
+            raise TypeError(
+                "The type of the argument st_bonus_rule is not LeadRule")
 
     def get_buy_bonus_rule(self):
         """Function for providing the buy bonus rule"""

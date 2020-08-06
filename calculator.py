@@ -4,6 +4,7 @@ from __future__ import division
 import logger
 import constants
 
+
 class Calculator:
     """Calculator class constructor takes the object of PricingRules\
     as an argument. This is the class which calculates the total price"""
@@ -41,7 +42,7 @@ class Calculator:
                                  '\' has not been accepted. Please provide \
                                      one of the following lead codes: \'b\', \'r\', \'st\''
                                  )
-            raise Exception(
+            raise ValueError(
                 "Lead code \''+LeadCode+'\' has not been accepted. Please \
                     provide one of the following lead codes: \'b\', \'r\', \'st\'"
             )
@@ -55,8 +56,8 @@ class Calculator:
                 self.logging.debug(
                     self.moduleName + 'Applying the rule: \
                     For the number of buyers above ' +
-                    str(self.__pricing_rules.get_buy_bonus_rule().get_min_quantity(
-                    )) + ', add a fixed amount of $' +
+                    str(self.__pricing_rules.get_buy_bonus_rule().
+                        get_min_quantity()) + ', add a fixed amount of $' +
                     str(self.__pricing_rules.get_buy_bonus_rule().get_bonus()))
                 self.__total_price += self.__total_buys*constants.B_PRICE + \
                     self.__pricing_rules.get_buy_bonus_rule().get_bonus()
@@ -65,10 +66,10 @@ class Calculator:
                 self.logging.debug(
                     self.moduleName +
                     'Applying the rule: For the number of buyers above ' +
-                    str(self.__pricing_rules.get_buy_bonus_rule().get_min_quantity(
-                    )) + ', add a variable pay of ' +
-                    str(self.__pricing_rules.get_buy_bonus_rule().get_bonus()) +
-                    "% on the base pay")
+                    str(self.__pricing_rules.get_buy_bonus_rule().
+                        get_min_quantity()) + ', add a variable pay of ' +
+                    str(self.__pricing_rules.get_buy_bonus_rule().get_bonus())
+                    + "% on the base pay")
                 self.__total_price += self.__total_buys*constants.B_PRICE + \
                     self.__pricing_rules.get_buy_bonus_rule().get_bonus()*self.__total_buys * \
                     constants.B_PRICE/100
@@ -85,9 +86,10 @@ class Calculator:
                 self.logging.debug(
                     self.moduleName +
                     'Applying the rule: For the number of rents above ' +
-                    str(self.__pricing_rules.get_rent_bonus_rule().get_min_quantity(
-                    )) + ', add a fixed amount of $' +
-                    str(self.__pricing_rules.get_rent_bonus_rule().get_bonus()))
+                    str(self.__pricing_rules.get_rent_bonus_rule().
+                        get_min_quantity()) + ', add a fixed amount of $' +
+                    str(self.__pricing_rules.get_rent_bonus_rule().get_bonus())
+                )
                 self.__total_price += self.__total_rents*constants.R_PRICE + \
                     self.__pricing_rules.get_rent_bonus_rule().get_bonus()
             elif self.__pricing_rules.get_rent_bonus_rule().get_bonus_type(
@@ -95,10 +97,10 @@ class Calculator:
                 self.logging.debug(
                     self.moduleName +
                     'Applying the rule: For the number of rents above ' +
-                    str(self.__pricing_rules.get_rent_bonus_rule().get_min_quantity(
-                    )) + ', add a variable pay of ' +
-                    str(self.__pricing_rules.get_rent_bonus_rule().get_bonus()) +
-                    "% on the base pay")
+                    str(self.__pricing_rules.get_rent_bonus_rule().
+                        get_min_quantity()) + ', add a variable pay of ' +
+                    str(self.__pricing_rules.get_rent_bonus_rule().get_bonus())
+                    + "% on the base pay")
                 self.__total_price += self.__total_rents*constants.R_PRICE + \
                     self.__pricing_rules.get_rent_bonus_rule().get_bonus()*self.__total_rents * \
                     constants.R_PRICE/100
@@ -115,8 +117,8 @@ class Calculator:
                 self.logging.debug(
                     self.moduleName +
                     'Applying the rule: For the number of short term leases above '
-                    + str(self.__pricing_rules.get_st_bonus_rule().get_min_quantity(
-                    )) + ', add a fixed amount of $' +
+                    + str(self.__pricing_rules.get_st_bonus_rule().
+                          get_min_quantity()) + ', add a fixed amount of $' +
                     str(self.__pricing_rules.get_st_bonus_rule().get_bonus()))
                 self.__total_price += self.__total_short_terms*constants.ST_PRICE + \
                     self.__pricing_rules.get_st_bonus_rule().get_bonus()
@@ -125,13 +127,13 @@ class Calculator:
                 self.logging.debug(
                     self.moduleName +
                     'Applying the rule: For the number of short term leases above '
-                    + str(self.__pricing_rules.get_st_bonus_rule().get_min_quantity(
-                    )) + ', add a variable pay of ' +
+                    + str(self.__pricing_rules.get_st_bonus_rule().
+                          get_min_quantity()) + ', add a variable pay of ' +
                     str(self.__pricing_rules.get_st_bonus_rule().get_bonus()) +
                     "% on the base pay")
                 self.__total_price += self.__total_short_terms*constants.ST_PRICE + \
-                    self.__pricing_rules.get_st_bonus_rule().get_bonus()*self.__total_short_terms * \
-                    constants.ST_PRICE/100
+                    self.__pricing_rules.get_st_bonus_rule().get_bonus() \
+                        * self.__total_short_terms * constants.ST_PRICE/100
         else:
             self.logging.debug(
                 self.moduleName +

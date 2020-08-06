@@ -18,6 +18,8 @@ class LeadRule:
                 bonus,
                 (float, int)) and bonus_type in (constants.BONUS_TYPE_FIXED,
                                                  constants.BONUS_TYPE_PERCENTAGE):
+            if min_quantity < 0 or bonus < 0:
+                raise ValueError("Quantity should be greater than 0")
             self.__min_quantity = min_quantity
             self.__bonus = bonus
             self.__bonus_type = bonus_type
@@ -27,7 +29,7 @@ class LeadRule:
                 'Incorrect argument types. Please check if quantity is  \'int\',\
                      bonus is \'int\' and bonus type is \'fixed\', or \'variable\''
             )
-            raise Exception(
+            raise TypeError(
                 "Incorrect argument types. Please check if quantity is  \'int\',\
                      bonus is \'int\' and bonus type is \'fixed\', or \'variable\'"
             )
@@ -39,17 +41,18 @@ class LeadRule:
         else:
             self.logging.warning(self.moduleName +
                                  'Quantity should be of type: \'int\'')
-            raise Exception("Quantity should be of type: \'int\'")
+            raise TypeError("Quantity should be of type: \'int\'")
 
     def set_bonus_type(self, bonus_type):
         """Function to set the bonus type"""
-        if bonus_type in (constants.BONUS_TYPE_FIXED, constants.BONUS_TYPE_PERCENTAGE):
+        if bonus_type in (constants.BONUS_TYPE_FIXED,
+                          constants.BONUS_TYPE_PERCENTAGE):
             self.__bonus_type = bonus_type
         else:
             self.logging.warning(
                 self.moduleName +
                 'Bonus type should be either \'fixed\', or \'variable\'')
-            raise Exception(
+            raise ValueError(
                 "Bonus type should be either \'fixed\', or \'variable\'")
 
     def set_bonus(self, bonus):
@@ -59,7 +62,7 @@ class LeadRule:
         else:
             self.logging.warning(self.moduleName +
                                  'Bonus should be of type: \'int\'')
-            raise Exception("Bonus should be of type: \'int\'")
+            raise TypeError("Bonus should be of type: \'int\'")
 
     def get_min_quantity(self):
         """Function to provide the quantity"""
