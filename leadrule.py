@@ -1,57 +1,74 @@
+"""Thid module is for setting and providing the bonus rules"""
 import logger
 import constants
-# class for setting rules for leads
 
 
 class LeadRule:
-    __quantity = constants.DEFAULT_QUANTITY
+    """class for setting rules for leads"""
+    __min_quantity = constants.DEFAULT_QUANTITY
     __bonus_type = constants.DEFAULT_BONUS_TYPE
     __bonus = constants.DEFAULT_BONUS
 
     moduleName = '[LeadRule] '
-    logging = logger.getLogger()
+    logging = logger.get_logger()
 
-    def __init__(self, quantity, bonus, bonus_type):
-        if isinstance(quantity, int) and (isinstance(bonus, int) or isinstance(bonus, float)) and (bonus_type == constants.BONUS_TYPE_FIXED or bonus_type == constants.BONUS_TYPE_PERCENTAGE):
-            self.__quantity = quantity
+    def __init__(self, min_quantity, bonus, bonus_type):
+        """Constructor which accepts the quantity, bonus and bonus type"""
+        if isinstance(min_quantity, int) and isinstance(
+                bonus,
+                (float, int)) and bonus_type in (constants.BONUS_TYPE_FIXED,
+                                                 constants.BONUS_TYPE_PERCENTAGE):
+            self.__min_quantity = min_quantity
             self.__bonus = bonus
             self.__bonus_type = bonus_type
         else:
             self.logging.warning(
-                self.moduleName+'Incorrect argument types. Please check if quantity is  \'int\', bonus is \'int\' and bonus type is \'fixed\', or \'variable\'')
+                self.moduleName +
+                'Incorrect argument types. Please check if quantity is  \'int\',\
+                     bonus is \'int\' and bonus type is \'fixed\', or \'variable\''
+            )
             raise Exception(
-                "Incorrect argument types. Please check if quantity is  \'int\', bonus is \'int\' and bonus type is \'fixed\', or \'variable\'")
+                "Incorrect argument types. Please check if quantity is  \'int\',\
+                     bonus is \'int\' and bonus type is \'fixed\', or \'variable\'"
+            )
 
-    def setMinQuantity(self, quantity):
-        if isinstance(quantity, int):
-            self.__quantity = quantity
+    def set_min_quantity(self, min_quantity):
+        """Function to set the quantity"""
+        if isinstance(min_quantity, int):
+            self.__min_quantity = min_quantity
         else:
-            self.logging.warning(
-                self.moduleName+'Quantity should be of type: \'int\'')
+            self.logging.warning(self.moduleName +
+                                 'Quantity should be of type: \'int\'')
             raise Exception("Quantity should be of type: \'int\'")
 
-    def setBonusType(self, bonus_type):
-        if bonus_type == constants.BONUS_TYPE_FIXED or bonus_type == constants.BONUS_TYPE_PERCENTAGE:
+    def set_bonus_type(self, bonus_type):
+        """Function to set the bonus type"""
+        if bonus_type in (constants.BONUS_TYPE_FIXED, constants.BONUS_TYPE_PERCENTAGE):
             self.__bonus_type = bonus_type
         else:
             self.logging.warning(
-                self.moduleName+'Bonus type should be either \'fixed\', or \'variable\'')
+                self.moduleName +
+                'Bonus type should be either \'fixed\', or \'variable\'')
             raise Exception(
                 "Bonus type should be either \'fixed\', or \'variable\'")
 
-    def setBonus(self, bonus):
+    def set_bonus(self, bonus):
+        """Function to set the bonus"""
         if isinstance(bonus, int):
             self.__bonus = bonus
         else:
-            self.logging.warning(
-                self.moduleName+'Bonus should be of type: \'int\'')
+            self.logging.warning(self.moduleName +
+                                 'Bonus should be of type: \'int\'')
             raise Exception("Bonus should be of type: \'int\'")
 
-    def getMinQuantity(self):
-        return self.__quantity
+    def get_min_quantity(self):
+        """Function to provide the quantity"""
+        return self.__min_quantity
 
-    def getBonusType(self):
+    def get_bonus_type(self):
+        """Function to provide the bonus type"""
         return self.__bonus_type
 
-    def getBonus(self):
+    def get_bonus(self):
+        """Function to provide the bonus"""
         return self.__bonus

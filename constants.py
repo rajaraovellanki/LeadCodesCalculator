@@ -1,3 +1,5 @@
+"""This is the place to add all the constants in this project"""
+
 BONUS_TYPE_FIXED = "fixed"
 BONUS_TYPE_PERCENTAGE = "variable"
 

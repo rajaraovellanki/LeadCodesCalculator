@@ -1,4 +1,5 @@
-import logger
+"""This module will call the main module - Calculator.py\
+    User can add the rules in this module"""
 import leadrule
 import pricingrules
 import calculator
@@ -9,7 +10,7 @@ TOTAL_NUMBER_OF_RENTS = 9
 TOTAL_NUMBER_OF_SHORT_TERM = 5
 
 #Test the program with some rules
-if constants.TEST_WRONG_INPUT == False:
+if constants.TEST_WRONG_INPUT is False:
     # Passing correct data
     buy_bonus_rule = leadrule.LeadRule(5, 10, constants.BONUS_TYPE_FIXED)
     rent_bonus_rule = leadrule.LeadRule(8, 10, constants.BONUS_TYPE_PERCENTAGE)
@@ -19,13 +20,13 @@ else:
 
 #Add the rules
 pricing_rules = pricingrules.PricingRules()
-pricing_rules.setBuyBonusRule(buy_bonus_rule)
-pricing_rules.setRentBonusRule(rent_bonus_rule)
+pricing_rules.set_buy_bonus_rule(buy_bonus_rule)
+pricing_rules.set_rent_bonus_rule(rent_bonus_rule)
 
 #Add the Lead codes
 calc = calculator.Calculator(pricing_rules)
 
-if constants.TEST_WRONG_INPUT == False:
+if constants.TEST_WRONG_INPUT is False:
     for x in range(TOTAL_NUMBER_OF_BUYS):
         calc.add(constants.IS_BUY)
 
